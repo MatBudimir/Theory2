@@ -2,9 +2,9 @@ namespace DiceRoller
 {
     window.addEventListener("load", handleLoad);
 
-    let targetPercentage: number = 30;
-    let maxDice: number = 6;
-    let sides: number = 6;
+    let targetPercentage: number = 0.3;
+    let dice: number = 4;
+    let sides: number = 8;
 
     let results: number[] = [];
     let probabilities: number[] = [];
@@ -13,7 +13,7 @@ namespace DiceRoller
 
     function handleLoad(): void
     {
-        console.log("Loading...")
+        console.log("Loading...");
 
         const button: HTMLButtonElement = document.querySelector("#roll")!;
         button.addEventListener("click", handleButtonClick);
@@ -21,12 +21,13 @@ namespace DiceRoller
         gatherResults(0, 0);
         computeProbability();
 
-        console.log("Loaded")
+        console.log("Loaded");
+        console.log(probabilities);
     }
 
     function gatherResults(_sum: number, _dice: number): void
     {
-        if (_dice === maxDice)
+        if (_dice === dice)
         {
             results.push(_sum);
             return;
@@ -40,10 +41,10 @@ namespace DiceRoller
 
     function computeProbability(): void
     {
-        for (let i: number = maxDice; i <= (maxDice * sides); i++)
+        for (let i: number = 0; i <= (dice * sides); i++)
         {
-            let possibilities: number = Math.pow(sides, maxDice);
-            let prob: number = results.filter(item => item === i).length / possibilities * 100;
+            let possibilities: number = Math.pow(sides, dice);
+            let prob: number = results.filter(item => item === i).length / possibilities;
             probabilities.push(prob);
         }
     }
@@ -52,15 +53,15 @@ namespace DiceRoller
     {
         for (let i: number = 0; i < _n; i++)
         {
-             let diceTotal: number = 0;
+            let diceTotal: number = 0;
 
-            for (let k: number = 0; k < maxDice; k++)
+            for (let k: number = 0; k < dice; k++)
             {
                 let roll: number = Math.ceil(Math.random() * sides);
                 diceTotal += roll;
             }
-            // console.log(diceTotal)
-            checkThreshold(diceTotal)
+           // console.log(diceTotal)
+            checkThreshold(diceTotal);
         }
         console.log("Success: " + simulationResults[0]);
         console.log("Failed: " + simulationResults[1]);
@@ -69,23 +70,23 @@ namespace DiceRoller
 
     function checkThreshold(_diceTotal: number): void
     {
-            let totalProbability: number = 100;
+        let totalProbability: number = 1;
 
+        for (let j: number = dice; j < _diceTotal; j++)
+        {
+            let currentProbability = probabilities[j];
+            totalProbability -= currentProbability;
+        }
 
-            for (let j: number = 0; j < _diceTotal - maxDice; j++)
-            {
-                let currentProbability = probabilities[j];
-                totalProbability -= currentProbability;
-            }
+        // console.log(totalProbability)
 
-            // console.log(totalProbability)
-
-            if (totalProbability <= targetPercentage)
-                {
-                    simulationResults[0] +=1
-                } else {
-                    simulationResults[1] +=1
-                }
+        if (totalProbability <= targetPercentage)
+        {
+            simulationResults[0] += 1;
+        } else
+        {
+            simulationResults[1] += 1;
+        }
     }
 
     function handleButtonClick()
