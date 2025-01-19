@@ -2,7 +2,7 @@
 let result = 0;
 let resources = Array(13).fill(0); // Food, Clay, Labor, Papyrus, Stone, Wood, Bronze, Gold, Herbs, Jewelry, Tools, Weapons, Horse, Chariot, Treasure, Horde, Population
 let turnCount = 0;
-// Roll a d100 (100%)
+Simulate();
 function RandomAction() {
     let result = Math.floor(Math.random() * 100 + 1);
     if (result <= 10) { // Food
@@ -51,10 +51,10 @@ function Simulate() {
         RandomAction();
         turnCount += 1;
     }
+    displayInfo();
+}
+function displayInfo() {
     console.log(`Simulation complete in ${turnCount} turns.`);
     console.log(`Simulation complete in ${turnCount / 4} rounds.`);
-    console.log("Final resources:", resources);
+    console.log(`Final resources: ${resources}`);
 }
-Simulate();
-// console.log(result);
-// console.log(resources);
