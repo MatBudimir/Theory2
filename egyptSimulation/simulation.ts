@@ -49,8 +49,6 @@ function RandomAction()
     { // Horse
         resources[12] += 1;
     }
-
-    //console.log(result);
 }
 
 function Simulate()
@@ -68,5 +66,18 @@ function Simulate()
 function displayInfo(){
     console.log(`Simulation complete in ${turnCount} turns.`);
     console.log(`Simulation complete in ${turnCount/4} rounds.`);
-    console.log(`Final resources: ${resources}`);
+    console.log(`Final resources: 
+    Food: ${resources[0]}
+    Clay: ${resources[1]}
+    Labor: ${resources[2]}
+    Papyrus: ${resources[3]}
+    Stone: ${resources[4]}
+    Wood: ${resources[5]}
+    Bronze: ${resources[6]}
+    Gold: ${resources[7]}
+    Herbs: ${resources[8]}
+    Jewelry: ${resources[9]}
+    Tools: ${resources[10]}
+    Weapons: ${resources[11]}`);
+
 }

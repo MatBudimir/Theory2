@@ -44,7 +44,6 @@ function RandomAction() {
     else if (result <= 89) { // Horse
         resources[12] += 1;
     }
-    //console.log(result);
 }
 function Simulate() {
     while (resources[0] < 14 || resources[1] < 16 || resources[2] < 14 || resources[3] < 16 || resources[4] < 13 || resources[5] < 12 || resources[6] < 8 || resources[7] < 7 || resources[8] < 6 || resources[9] < 2 || resources[10] < 4 || resources[11] < 4) {
@@ -56,5 +55,17 @@ function Simulate() {
 function displayInfo() {
     console.log(`Simulation complete in ${turnCount} turns.`);
     console.log(`Simulation complete in ${turnCount / 4} rounds.`);
-    console.log(`Final resources: ${resources}`);
+    console.log(`Final resources: 
+    Food: ${resources[0]}
+    Clay: ${resources[1]}
+    Labor: ${resources[2]}
+    Papyrus: ${resources[3]}
+    Stone: ${resources[4]}
+    Wood: ${resources[5]}
+    Bronze: ${resources[6]}
+    Gold: ${resources[7]}
+    Herbs: ${resources[8]}
+    Jewelry: ${resources[9]}
+    Tools: ${resources[10]}
+    Weapons: ${resources[11]}`);
 }
