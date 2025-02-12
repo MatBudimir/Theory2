@@ -17,36 +17,36 @@ function RandomAction() {
     else if (result <= 40) { // Papyrus
         resources[3] += 1;
     }
-    else if (result <= 48) { // Stone
+    else if (result <= 47) { // Stone
         resources[4] += 1;
     }
     else if (result <= 54) { // Wood
         resources[5] += 1;
     }
-    else if (result <= 62) { // Bronze
+    else if (result <= 61) { // Bronze
         resources[6] += 1;
     }
-    else if (result <= 70) { // Gold
+    else if (result <= 68) { // Gold
         resources[7] += 1;
     }
-    else if (result <= 76) { // Herbs
+    else if (result <= 74) { // Herbs
         resources[8] += 1;
     }
-    else if (result <= 80) { // Jewelry
+    else if (result <= 77) { // Jewelry
         resources[9] += 1;
     }
-    else if (result <= 85) { // Tools
+    else if (result <= 80) { // Tools
         resources[10] += 1;
     }
-    else if (result <= 88) { // Weapons
+    else if (result <= 82) { // Weapons
         resources[11] += 1;
     }
-    else if (result <= 89) { // Horse
+    else if (result <= 84) { // Horse
         resources[12] += 1;
     }
 }
 function Simulate() {
-    while (resources[0] < 14 || resources[1] < 16 || resources[2] < 14 || resources[3] < 16 || resources[4] < 13 || resources[5] < 12 || resources[6] < 8 || resources[7] < 7 || resources[8] < 6 || resources[9] < 2 || resources[10] < 4 || resources[11] < 4) {
+    while (resources[0] < 15 || resources[1] < 15 || resources[2] < 17 || resources[3] < 17 || resources[4] < 11 || resources[5] < 11 || resources[6] < 9 || resources[7] < 9 || resources[8] < 10 || resources[9] < 2 || resources[10] < 5 || resources[11] < 3) {
         RandomAction();
         turnCount += 1;
     }
